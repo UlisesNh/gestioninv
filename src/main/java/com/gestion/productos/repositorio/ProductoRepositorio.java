@@ -1,22 +1,19 @@
 package com.gestion.productos.repositorio;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.gestion.productos.entidades.Producto;
 
-public interface ProductoRepositorio extends JpaRepository <Producto , Long> {
+public interface ProductoRepositorio extends JpaRepository<Producto, Long> {
 
-	@Query("SELECT p FROM Producto p WHERE"
-			+ " CONCAT(p.id,p.nombre,p.marca,p.hechoEn,p.precio)"
-			+ " LIKE %?1%")
-	public 
-	
-	List<Producto> findAll(String palabraClave);
-
-	Optional<Producto> findById(Long id);
+    @Query("SELECT p FROM Producto p WHERE "
+            + "CONCAT(p.id, p.sku, p.articulo, p.marca, p.modelo, "
+            + "p.departamento, p.clase, p.familia, p.fechaAlta, "
+            + "p.stock, p.cantidad, p.descontinuado, p.fechaBaja) "
+            + "LIKE %?1%")
+    List<Producto> findAll(String palabraClave);
 
 }

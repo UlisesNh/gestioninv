@@ -1,42 +1,123 @@
 <!DOCTYPE html>
-<html xmlns:th= "http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Producto</title>
+    <title>Programa ABCC</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container">
-  <div class="row">
-  <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-	 <h1 class="text-center">Alta Sku</h1>
-	 <div class="card-body">
-		 <form th:action="@{/guardar}" th:object="${producto}" method = "post">
-			<div class="form-group">
-				<label>Nombre :</label>
-				<input type="text" name = "nombre" th:field="*{nombre}" class="form-control" placeholder="Digite el nombre">
-			</div> 
-			<div class="form-group">
-				<label>Marca :</label>
-				<input type="text" name = "marca" th:field="*{marca}" class="form-control" placeholder="Digite la marca">
-			</div> 
-			<div class="form-group">
-				<label>Hecho En :</label>
-				<input type="text" name = "hechoEn" th:field="*{hechoEn}" class="form-control" placeholder="Donde se fabrico">
-			</div> 
-			<div class="form-group">
-				<label>Precio :</label>
-				<input type="number" name = "precio" th:field="*{precio}" class="form-control" placeholder="Digite el precio del producto">
-			</div> 
-			<div class="box-footer">
-				<button class="btn-success float-right">Ver Sku</button>
-			</div>
-		 </form>
-	 </div> 
-  </div>
-  </div>
-  </div>
-		
+    <div class="container mt-5">
+        <h1>Programa ABCC</h1>
+       <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+            <div class="form-group">
+                <label for="sku">SKU:</label>
+                <input type="text" id="sku" name="sku" class="form-control" required maxlength="6">
+            </div>
+            <div class="form-group">
+                <label for="articulo">Artículo:</label>
+                <input type="text" id="articulo" name="articulo" class="form-control" required maxlength="15">
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" class="form-control" required maxlength="15">
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" name="modelo" class="form-control" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="departamento">Departamento:</label>
+                <select id="departamento" name="departamento" class="form-control" required>
+                    <option value="1">Departamento 1</option>
+                    <option value="2">Departamento 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="clase">Clase:</label>
+                <select id="clase" name="clase" class="form-control" required>
+                    <option value="1">Clase 1</option>
+                    <option value="2">Clase 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="familia">Familia:</label>
+                <select id="familia" name="familia" class="form-control" required>
+                    <option value="01">Familia 01</option>
+                    <option value="02">Familia 02</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fechaAlta">Fecha de Alta:</label>
+                <input type="date" id="fechaAlta" name="fechaAlta" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" class="form-control" required max="999999999">
+            </div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" class="form-control" required max="999999999">
+            </div>
+            <div class="form-group">
+                <label for="descontinuado">Descontinuado:</label>
+                <select id="descontinuado" name="descontinuado" class="form-control" required>
+                    <option value="0">No</option>
+                    <option value="1">Sí</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fechaBaja">Fecha de Baja:</label>
+                <input type="date" id="fechaBaja" name="fechaBaja" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar Artículo</button>
+            </div>
+        </form>
+    </div>
+    <div class="container text-center"> 
+        <br>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Artículo</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Clase</th>
+                        <th scope="col">Familia</th>
+                        <th scope="col">Fecha de Alta</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Descontinuado</th>
+                        <th scope="col">Fecha de Baja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${listaProductos}">
+                        <td th:text="${producto.id}"></td>
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.marca}"></td>
+                        <td th:text="${producto.hechoEn}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td>
+                            <div class="d-flex justify-content-between align-items-center mr-2">
+                                <a class="btn btn-primary" th:href="@{'/editar/' + ${producto.id}}">Cambio</a>
+                                <a class="btn btn-danger " th:href="@{'/eliminar/' + ${producto.id}}">Baja</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
-
+``

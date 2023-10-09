@@ -5,73 +5,158 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Producto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(nullable = false, length = 60)
-	private String nombre;
-	@Column(nullable = false, length = 60)
-	private String marca;
-	@Column(nullable = false, length = 60)
-	private String hechoEn;
-	@Column(nullable = false)
-	private float precio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public Producto(Long id, String nombre, String marca, String hechoEn, float precio) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.marca = marca;
-		this.hechoEn = hechoEn;
-		this.precio = precio;
-	}
+    @Column(nullable = false, length = 6, unique = true) 
+    private String sku;
 
-	public Producto() {
-		super();
-	}
+    @Column(nullable = false, length = 15)
+    private String articulo;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(nullable = false, length = 15)
+    private String marca;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(length = 20)
+    private String modelo;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @Column(nullable = false)
+    private int departamento;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    @Column(nullable = false)
+    private int clase;
 
-	public String getMarca() {
-		return marca;
-	}
+    @Column(nullable = false)
+    private String familia;
 
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
+    @Column(nullable = false)
+    private Date fechaAlta;
 
-	public String getHechoEn() {
-		return hechoEn;
-	}
+    @Column(nullable = false)
+    private int stock;
 
-	public void setHechoEn(String hechoEn) {
-		this.hechoEn = hechoEn;
-	}
+    @Column(nullable = false)
+    private int cantidad;
 
-	public float getPrecio() {
-		return precio;
-	}
+    @Column(nullable = false)
+    private boolean descontinuado;
 
-	public void setPrecio(float precio) {
-		this.precio = precio;
-	}
+    @Column
+    private Date fechaBaja;
 
+    public Producto() {
+    }
+
+    // Getters y Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
+    public String getArticulo() {
+        return articulo;
+    }
+
+    public void setArticulo(String articulo) {
+        this.articulo = articulo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(int departamento) {
+        this.departamento = departamento;
+    }
+
+    public int getClase() {
+        return clase;
+    }
+
+    public void setClase(int clase) {
+        this.clase = clase;
+    }
+
+    public String getFamilia() {
+        return familia;
+    }
+
+    public void setFamilia(String familia) {
+        this.familia = familia;
+    }
+
+    public Date getFechaAlta() {
+        return fechaAlta;
+    }
+
+    public void setFechaAlta(Date fechaAlta) {
+        this.fechaAlta = fechaAlta;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public boolean isDescontinuado() {
+        return descontinuado;
+    }
+
+    public void setDescontinuado(boolean descontinuado) {
+        this.descontinuado = descontinuado;
+    }
+
+    public Date getFechaBaja() {
+        return fechaBaja;
+    }
+
+    public void setFechaBaja(Date fechaBaja) {
+        this.fechaBaja = fechaBaja;
+    }
 }
+

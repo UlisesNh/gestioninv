@@ -11,7 +11,7 @@
   <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 	 <h1 class="text-center">Alta Sku</h1>
 	 <div class="card-body">
-		 <form th:action="@{/guardar}" th:object="${producto}" method = "post">
+		 <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
 			 
 			 <div class="form-group">
 				<label>Sku :</label>
@@ -42,6 +42,49 @@
   </div>
   </div>
   </div>
+  <div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">SKU</th>
+                <th scope="col">Artículo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Clase</th>
+                <th scope="col">Familia</th>
+                <th scope="col">Fecha de Alta</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Descontinuado</th>
+                <th scope="col">Fecha de Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="producto : ${listaProductos}">
+                <td th:text="${producto.id}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.marca}"></td>
+                <td th:text="${producto.hechoEn}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td>
+					<div class="d-flex justify-content-between align-items-center mr-2">
+    <a class="btn btn-primary" th:href="@{'/editar/' + ${producto.id}}">Cambio</a>
+    <a class="btn btn-danger " th:href="@{'/eliminar/' + ${producto.id}}">Baja</a>
+</div>
+
+				</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+	</div>
 		
 </body>
 </html>
